@@ -8,8 +8,9 @@
 export default {
   private: {
     text: "欢迎打开详情页"
-  }
-}
+  },
+  fb() {}
+};
 </script>
 
 <style>

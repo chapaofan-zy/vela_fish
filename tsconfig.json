@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "types": ["./node_modules/ux-types/lib/feature/index.d.ts"],
+    "target": "esnext",
+    "moduleResolution": "bundler"
+  },
+  "include": ["src/**/*.ts"]
+}

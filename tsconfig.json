@@ -3,7 +3,9 @@
     "lib": ["ESNext", "DOM"],
     "types": ["ux-types/feature"],
     "target": "esnext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "noImplicitThis": true
   },
   "include": ["src/**/*.ts"]
 }

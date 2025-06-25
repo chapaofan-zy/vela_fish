@@ -5,5 +5,7 @@ export default defineComponent({
   public: {
     lake: new Lake()
   },
-  onShow() {}
+  onShow() {
+    this.lake.waitForBite();
+  }
 });

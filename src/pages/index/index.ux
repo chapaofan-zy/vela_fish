@@ -1,6 +1,7 @@
 <template>
-  <div class="">
-    <div></div>
+  <div @click="lake.clickLake(lake.isBiting)">
+    <div><text>aaaaa</text></div>
+    <div if="{{ lake.bite }}"><text>bite</text></div>
   </div>
 </template>
 

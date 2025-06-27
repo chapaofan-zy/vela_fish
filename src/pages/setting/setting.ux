@@ -1,0 +1,10 @@
+<template>
+	<div></div>
+</template>
+
+<script>
+import page from './setting'
+export default page;
+</script>
+
+<style></style>

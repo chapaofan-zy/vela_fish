@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
     "types": ["ux-types/feature"],
     "target": "esnext",
     "moduleResolution": "bundler",
     "allowJs": true,
     "noImplicitThis": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*"]
 }

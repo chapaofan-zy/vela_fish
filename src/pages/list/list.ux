@@ -1,16 +1,12 @@
 <template>
-  <div class="demo-page">
-    <text class="title">{{ text }}</text>
+  <div>
+    <div for="list"></div>
   </div>
 </template>
 
 <script>
-export default {
-  private: {
-    text: "欢迎打开详情页"
-  },
-  fb() {}
-};
+import page from "./list";
+export default page;
 </script>
 
 <style>

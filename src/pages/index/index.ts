@@ -1,7 +1,7 @@
 import Lake from "../../util/lake";
-import { defineComponent } from "ux-types";
+import { defineUxComponent } from "ux-types";
 
-export default defineComponent({
+export default defineUxComponent({
   public: {
     lake: new Lake()
   },

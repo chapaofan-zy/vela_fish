@@ -24,8 +24,11 @@
       "pages/index": {
         "component": "index"
       },
-      "pages/detail": {
-        "component": "detail"
+      "pages/list": {
+        "component": "list"
+      },
+      "pages/setting": {
+        "component": "setting"
       }
     }
   }

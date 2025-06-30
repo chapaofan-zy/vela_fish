@@ -29,6 +29,12 @@
       },
       "pages/setting": {
         "component": "setting"
+      },
+      "pages/detail": {
+        "component": "detail"
+      },
+      "pages/level": {
+        "component": "level"
       }
     }
   }

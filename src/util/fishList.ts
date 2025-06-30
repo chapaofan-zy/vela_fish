@@ -1,73 +1,91 @@
 import type { FishType } from "./fish";
 
 export enum Level {
-  ONE = 2,
-  TWO = 8,
-  THREE = 10,
-  FOUR = 30,
-  FIVE = 50
+  ONE = 1,
+  TWO = 2,
+  THREE = 3,
+  FOUR = 4,
+  FIVE = 5
 }
 
 export type FishName = string;
 
-export const fishList = new Map<Level, FishName[]>([[Level.ONE, ["aaa"]]]);
+interface ILevelList {
+  name: FishName;
+  size: number;
+  range: number;
+  level: Level;
+  img: string;
+  description?: string;
+}
 
-const fishes: [FishName, FishType][] = [
-  [
-    "aaa",
-    {
-      name: "aaa",
-      size: 10,
-      range: 5,
-      level: Level.FIVE,
-      img: "/common/logo.png",
-      description: "A common fish found in lakes."
-    }
-  ],
-  [
-    "bbb",
-    {
-      name: "bbb",
-      size: 10,
-      range: 5,
-      level: Level.FOUR,
-      img: "/common/logo.png",
-      description: "A common fish found in lakes."
-    }
-  ],
-  [
-    "ccc",
-    {
-      name: "ccc",
-      size: 10,
-      range: 5,
-      level: Level.THREE,
-      img: "/common/logo.png",
-      description: "A common fish found in lakes."
-    }
-  ],
-  [
-    "ddd",
-    {
-      name: "ddd",
-      size: 10,
-      range: 5,
-      level: Level.TWO,
-      img: "/common/logo.png",
-      description: "A common fish found in lakes."
-    }
-  ],
-  [
-    "eee",
-    {
-      name: "eee",
-      size: 10,
-      range: 5,
-      level: Level.ONE,
-      img: "/common/logo.png",
-      description: "A common fish found in lakes."
-    }
-  ]
+const levelOne: ILevelList[] = [
+  {
+    name: "eee",
+    size: 10,
+    range: 5,
+    level: Level.ONE,
+    img: "/common/logo.png",
+    description: "A common fish found in lakes."
+  }
 ];
 
-export const fishMap = new Map<FishName, FishType>(fishes);
+const levelTwo: ILevelList[] = [
+  {
+    name: "ddd",
+    size: 10,
+    range: 5,
+    level: Level.TWO,
+    img: "/common/logo.png",
+    description: "A common fish found in lakes."
+  }
+];
+
+const levelThree: ILevelList[] = [
+  {
+    name: "ccc",
+    size: 10,
+    range: 5,
+    level: Level.THREE,
+    img: "/common/logo.png",
+    description: "A common fish found in lakes."
+  }
+];
+
+const levelFour: ILevelList[] = [
+  {
+    name: "bbb",
+    size: 10,
+    range: 5,
+    level: Level.FOUR,
+    img: "/common/logo.png",
+    description: "A common fish found in lakes."
+  }
+];
+
+const levelFive: ILevelList[] = [
+  {
+    name: "aaa",
+    size: 10,
+    range: 5,
+    level: Level.FIVE,
+    img: "/common/logo.png",
+    description: "A common fish found in lakes."
+  }
+];
+
+export const fishList = new Map<Level, FishType[]>([
+  [Level.ONE, levelOne],
+  [Level.TWO, levelTwo],
+  [Level.THREE, levelThree],
+  [Level.FOUR, levelFour],
+  [Level.FIVE, levelFive]
+]);
+
+export const getFishType = (name: FishName) => {
+  for (const [_level, list] of fishList) {
+    const fish = list.find((fish) => fish.name === name);
+    if (fish) return fish;
+  }
+  return;
+};

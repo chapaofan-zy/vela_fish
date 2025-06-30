@@ -1,4 +1,4 @@
-import { fishMap, type FishName } from "./fishList";
+import { getFishType, type FishName } from "./fishList";
 
 export interface FishType {
   name: string;
@@ -10,16 +10,26 @@ export interface FishType {
 }
 
 export class Fish {
-  static fishMap = fishMap;
-
   readonly date = new Date();
   readonly size: number;
-  readonly fish: FishType;
+  readonly fishInfo: FishType;
+
+  get level() {
+    return this.fishInfo.level;
+  }
+
+  get description() {
+    return this.fishInfo.description;
+  }
+
+  get img() {
+    return this.fishInfo.img;
+  }
 
   constructor(public name: FishName) {
-    const fish = Fish.fishMap.get(name);
-    if (!fish) return;
-    this.size = fish.size + Number((Math.random() * fish.range).toFixed(2));
-    this.fish = fish;
+    const fishType = getFishType(name);
+    if (!fishType) return;
+    this.size = fishType.size + Number((Math.random() * fishType.range).toFixed(2));
+    this.fishInfo = fishType;
   }
 }

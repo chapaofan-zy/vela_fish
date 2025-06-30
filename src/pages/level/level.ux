@@ -1,0 +1,48 @@
+<template>
+  <div class="bg">
+    <div for="store">
+      <div class="item" @click="go($item)">
+        <text>{{ $item.name }}</text>
+      </div>
+    </div>
+    <!-- <list class="list">
+      <list-item type="item" for="store" class="item">
+        <text>{{ $item }}</text>
+      </list-item>
+    </list> -->
+  </div>
+</template>
+
+<script>
+import FishStore from "../../util/fishStore";
+import router from "@system.router";
+export default {
+  protected: {
+    level: "",
+    store: []
+  },
+  async onShow() {
+    console.log(Number(this.level));
+    this.store = await FishStore.getFish(Number(this.level));
+    console.log(this.store);
+  },
+  go(item) {
+    router.push({ uri: "/pages/detail", params: { fish: JSON.stringify(item) } });
+  }
+};
+</script>
+
+<style>
+@import url("../../global.css");
+.list {
+  width: 100%;
+  height: 100%;
+}
+
+.item {
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+</style>

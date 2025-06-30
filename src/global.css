@@ -1,0 +1,35 @@
+text {
+  color: #fff;
+  opacity: 1;
+}
+
+.bg {
+  position: relative;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.list {
+  width: 70%;
+}
+
+.item {
+  background-color: rgb(130, 130, 130);
+  width: 100%;
+  border-radius: 10dp;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 5px 0;
+}
+
+.line {
+  height: 1dp;
+  width: 100%;
+  background-color: #000;
+}

@@ -1,10 +1,12 @@
 <template>
-	<div></div>
+  <div></div>
 </template>
 
 <script>
-import page from './setting'
+import page from "./setting";
 export default page;
 </script>
 
-<style></style>
+<style>
+@import url("../../global.css");
+</style>

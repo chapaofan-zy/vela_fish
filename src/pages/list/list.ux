@@ -1,6 +1,15 @@
 <template>
-  <div>
-    <div for="list"></div>
+  <div class="bg">
+    <div for="levelList">
+      <div @click="go($idx + 1)" class="item">
+        <text>{{ `LEVEL ${$idx + 1}` }}</text>
+      </div>
+    </div>
+    <!-- <list class="list">
+      <list-item type="fish" for="levelList" class="item" @click="go($idx + 1)">
+        <text>{{ `LEVEL ${$idx + 1}` }}</text>
+      </list-item>
+    </list> -->
   </div>
 </template>
 
@@ -10,14 +19,8 @@ export default page;
 </script>
 
 <style>
-.demo-page {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.title {
-  font-size: 20px;
-  text-align: center;
+@import url("../../global.css");
+.list {
+  height: 100%;
 }
 </style>

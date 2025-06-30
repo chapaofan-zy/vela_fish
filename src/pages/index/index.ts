@@ -1,11 +1,32 @@
+import type { Fish } from "../../util/fish";
 import Lake from "../../util/lake";
 import { defineUxComponent } from "ux-types";
+import router from "@system.router";
+import FishStore from "../../util/fishStore";
 
 export default defineUxComponent({
   public: {
-    lake: new Lake()
+    lake: new Lake(),
+    showTip: false,
+    fish: undefined,
+    dropped: false
   },
-  onShow() {
-    this.lake.waitForBite();
+  showOnFish() {
+    this.showTip = true;
+  },
+  async drop() {
+    this.dropped = true;
+    try {
+      this.fish = (await this.lake.waitForBite()) as Fish;
+      await FishStore.saveFish(this.fish);
+      this.showOnFish();
+    } catch (e) {
+      console.error(e);
+    } finally {
+      this.dropped = false;
+    }
+  },
+  goList() {
+    router.push({ uri: "/pages/list" });
   }
 });

@@ -15,8 +15,8 @@ importers:
         specifier: ^2.0.4
         version: 2.0.4(@babel/core@7.27.4)
       ux-types:
-        specifier: ^1.7.0-beta.7
-        version: 1.7.0-beta.7
+        specifier: link:..\..\vs-aiot-languageserver\packages\ux-types
+        version: link:../../vs-aiot-languageserver/packages/ux-types
 
 packages:
 
@@ -2535,9 +2535,6 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
-
-  ux-types@1.7.0-beta.7:
-    resolution: {integrity: sha512-gvYEOypPauBMWPeXSQVXOUWkoe912bACwFi+ORlAtJTuuimUzNZmNxEU7OadvCVcq7n9jA461NW2eVMehdjl+A==}
 
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
@@ -5433,8 +5430,6 @@ snapshots:
       file-loader: 6.2.0(webpack@5.99.9)
 
   util-deprecate@1.0.2: {}
-
-  ux-types@1.7.0-beta.7: {}
 
   vary@1.1.2: {}
 

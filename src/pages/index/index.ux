@@ -1,7 +1,13 @@
+<import name="fish-info" src="../../component/fishInfo"></import>
 <template>
-  <div @click="lake.clickLake(lake.isBiting)">
-    <div><text>aaaaa</text></div>
+  <div @click="lake.clickLake(lake.isBiting)" class="bg">
     <div if="{{ lake.bite }}"><text>bite</text></div>
+    <input type="button" @click="drop" value="drop" />
+    <input type="button" value="list" @click="goList" />
+    <div if="{{ showTip }}" class="tip">
+      <fish-info fish="{{ fish }}" cb="{{ () => showTip = false }}"></fish-info>
+      <input type="button" @click="() => (showTip = false)" value="close" />
+    </div>
   </div>
 </template>
 
@@ -11,24 +17,26 @@ export default page;
 </script>
 
 <style>
-.demo-page {
+@import url("../../global.css");
+.bg {
+  padding: 20% 10%;
+  position: relative;
+}
+
+.tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 70%;
+  height: 70%;
+  border-radius: 6dp;
+  background-color: #828282;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.title {
-  font-size: 20px;
-  text-align: center;
-}
-
-.btn {
-  width: 200px;
-  height: 40px;
-  margin-top: 20px;
-  border-radius: 5px;
-  background-color: #09ba07;
-  font-size: 20px;
-  color: #ffffff;
 }
 </style>

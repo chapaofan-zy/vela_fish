@@ -18,6 +18,8 @@ export default defineUxComponent({
     this.dropped = true;
     try {
       this.fish = (await this.lake.waitForBite()) as Fish;
+      console.log("fffff", this.fish);
+
       await FishStore.saveFish(this.fish);
       this.showOnFish();
     } catch (e) {

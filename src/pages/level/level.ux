@@ -1,33 +1,31 @@
 <template>
-  <div class="bg">
-    <div for="store">
-      <div class="item" @click="go($item)">
-        <text>{{ $item.name }}</text>
-      </div>
+  <div class="bg" @swipe="$app.$def.exit">
+    <div for="store" class="item" @click="go($item)">
+      <text style="{{ {color: getColor($item.fishInfo.level)} }}">
+        {{ `${$item.name}\n` }}
+      </text>
+      <text class="size">{{ `${$item.size} | ${$item.fishInfo.description}` }}</text>
     </div>
-    <!-- <list class="list">
-      <list-item type="item" for="store" class="item">
-        <text>{{ $item }}</text>
-      </list-item>
-    </list> -->
   </div>
 </template>
 
 <script>
 import FishStore from "../../util/fishStore";
 import router from "@system.router";
+import { getLevelColor } from "../../util/fishList";
 export default {
   protected: {
     level: "",
     store: []
   },
   async onShow() {
-    console.log(Number(this.level));
     this.store = await FishStore.getFish(Number(this.level));
-    console.log(this.store);
   },
   go(item) {
     router.push({ uri: "/pages/detail", params: { fish: JSON.stringify(item) } });
+  },
+  getColor(level) {
+    return getLevelColor(level);
   }
 };
 </script>
@@ -40,9 +38,16 @@ export default {
 }
 
 .item {
-  height: 50px;
   width: 100%;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 7dp 5dp;
+}
+
+.size {
+  font-size: 10dp;
+  text-overflow: ellipsis;
+  lines: 1;
 }
 </style>

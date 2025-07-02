@@ -1,15 +1,10 @@
 <template>
-  <div class="bg">
+  <div class="bg" @swipe="$app.$def.exit">
     <div for="levelList">
       <div @click="go($idx + 1)" class="item">
-        <text>{{ `LEVEL ${$idx + 1}` }}</text>
+        <text style="{{ {color: $item} }}">{{ `LEVEL ${$idx + 1}` }}</text>
       </div>
     </div>
-    <!-- <list class="list">
-      <list-item type="fish" for="levelList" class="item" @click="go($idx + 1)">
-        <text>{{ `LEVEL ${$idx + 1}` }}</text>
-      </list-item>
-    </list> -->
   </div>
 </template>
 

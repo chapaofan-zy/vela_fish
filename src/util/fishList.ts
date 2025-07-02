@@ -8,6 +8,26 @@ export enum Level {
   FIVE = 5
 }
 
+export enum LevelColor {
+  RED = "red",
+  ORANGE = "orange",
+  PURPLE = "purple",
+  BLUE = "blue",
+  GREEN = "green",
+  WHITE = "white"
+}
+
+export const getLevelColor = (level: number) =>
+  Number(level) === Level.FIVE
+    ? LevelColor.WHITE
+    : level === Level.FOUR
+    ? LevelColor.GREEN
+    : level === Level.THREE
+    ? LevelColor.BLUE
+    : level === Level.TWO
+    ? LevelColor.PURPLE
+    : LevelColor.ORANGE;
+
 export type FishName = string;
 
 interface ILevelList {

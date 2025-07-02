@@ -1,5 +1,4 @@
 text {
-  color: #fff;
   opacity: 1;
 }
 
@@ -32,4 +31,10 @@ text {
   height: 1dp;
   width: 100%;
   background-color: #000;
+}
+
+@media (device-type: watch) {
+  .item {
+    width: 70%;
+  }
 }

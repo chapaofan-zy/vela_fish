@@ -9,6 +9,7 @@ export enum LakeLevel {
 }
 
 interface Probability {
+  zero: number;
   one: number;
   two: number;
   three: number;
@@ -24,9 +25,9 @@ export enum RodType {
 
 export default class Lake {
   private static lakeLevelMap = new Map<LakeLevel, Probability>([
-    [LakeLevel.ONE, { one: 2, two: 8, three: 10, four: 30, five: 50 }],
-    [LakeLevel.TWO, { one: 2, two: 8, three: 10, four: 30, five: 50 }],
-    [LakeLevel.THREE, { one: 2, two: 8, three: 10, four: 30, five: 50 }]
+    [LakeLevel.ONE, { zero: 0, one: 5, two: 10, three: 15, four: 30, five: 40 }],
+    [LakeLevel.TWO, { zero: 2, one: 10, two: 15, three: 20, four: 33, five: 20 }],
+    [LakeLevel.THREE, { zero: 5, one: 15, two: 20, three: 25, four: 20, five: 15 }]
   ]);
   rod = new Rod();
   bite = false;

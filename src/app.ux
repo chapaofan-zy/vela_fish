@@ -1,12 +1,15 @@
 <script>
 import FishStore from "./util/fishStore";
+import router from "@system.router";
 export default {
   async onCreate() {
-    console.log("app created");
     await FishStore.init();
   },
-  onDestroy() {
-    console.log("app destroyed");
+  async onDestroy() {
+    await FishStore.save();
+  },
+  exit(e) {
+    if (e.direction === "right") router.back();
   }
 };
 </script>

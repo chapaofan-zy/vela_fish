@@ -10,7 +10,7 @@ export interface FishType {
 }
 
 export class Fish {
-  readonly date = new Date();
+  readonly date = new Date().toLocaleString();
   readonly size: number;
   readonly fishInfo: FishType;
 

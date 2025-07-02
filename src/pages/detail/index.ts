@@ -1,6 +1,7 @@
 import { defineUxComponent } from "ux-types";
 import { Fish } from "../../util/fish";
 import router from "@system.router";
+import { getLevelColor } from "../../util/fishList";
 
 export default defineUxComponent({
   protected: {
@@ -19,7 +20,8 @@ export default defineUxComponent({
       return [
         {
           label: "名称",
-          value: this.info.name
+          value: this.info.name,
+          color: getLevelColor(this.info.fishInfo.level)
         },
         {
           label: "等级",
@@ -42,8 +44,5 @@ export default defineUxComponent({
     img() {
       return this.info.img;
     }
-  },
-  back() {
-    router.back();
   }
 });

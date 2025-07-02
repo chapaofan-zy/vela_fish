@@ -1,17 +1,21 @@
 <template>
-  <div class="bg">
+  <div class="bg" @swipe="$app.$def.exit">
     <div class="card">
       <image src="/common/logo.png" class="img"></image>
-      <div for="fishInfo" class="info">
-        <text>{{ `${$item.label}\n ${$item.value}` }}</text>
-        <div
-          class="line"
-          style="{{ {marginTop: '8dp'} }}"
-          if="{{ $idx < fishInfo.length - 1 }}"
-        ></div>
+      <div class="box">
+        <div for="fishInfo" class="info">
+          <text>
+            {{ `${$item.label}\n` }}
+          </text>
+          <text style="{{ $item.color && {color: $item.color} }}">{{ `${$item.value}` }}</text>
+          <div
+            class="line"
+            style="{{ {marginTop: '2dp'} }}"
+            if="{{ $idx < fishInfo.length - 1 }}"
+          ></div>
+        </div>
       </div>
     </div>
-    <input type="button" @click="back" value="<" />
   </div>
 </template>
 
@@ -22,27 +26,47 @@ export default page;
 
 <style>
 @import url("../../global.css");
+.bg {
+  justify-content: flex-start;
+}
 .img {
-  margin-top: 120dp;
-  align-self: center;
+  justify-self: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  padding: 10% 10%;
 }
 .card {
   background-color: rgb(130, 130, 130);
   border-radius: 20dp;
   display: flex;
   flex-direction: column;
-  width: 80%;
+  align-items: center;
+  width: 100%;
+  padding: 40dp 0;
 }
 
 .info {
-  padding: 10% 20%;
   display: flex;
   flex-direction: column;
+  padding: 10% 0;
 }
 
 .back {
   height: 40px;
   width: 100px;
   border: 1px solid #000;
+}
+
+@media (device: watch) {
+  .card {
+    width: 80%;
+  }
+
+  .info {
+    padding: 10% 20%;
+  }
 }
 </style>

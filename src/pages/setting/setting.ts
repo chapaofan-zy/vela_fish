@@ -3,29 +3,35 @@ import FishStore from "../../util/fishStore";
 
 export default defineUxComponent({
   private: {
-    lake: 1,
-    rod: 1
+    lake: undefined,
+    lakeLevel: 1,
+    rodType: 1
   },
-  async onShow() {
-    this.lake = Number(await FishStore.getLake()) || 1;
-    this.rod = Number(await FishStore.getRod()) || 1;
+  onShow() {
+    this.lake = this.$app.$def.data.lake;
+    console.log(this.lake);
+
+    this.lakeLevel = this.lake.level;
+    this.rodType = this.lake.rod.type;
   },
   async changeLake(n: number) {
     if (n === 1) {
-      this.lake = ((this.lake + 3) % 3) + 1;
+      this.lakeLevel = ((this.lakeLevel + 3) % 3) + 1;
     } else {
-      this.lake = this.lake - 1;
-      if (this.lake <= 0) this.lake += 3;
+      this.lakeLevel = this.lakeLevel - 1;
+      if (this.lakeLevel <= 0) this.lakeLevel += 3;
     }
-    await FishStore.saveLake({ level: this.lake });
+    this.lake.changeLevel(this.lakeLevel);
+    await FishStore.saveLake({ level: this.lakeLevel });
   },
   async changeRod(n: number) {
     if (n === 1) {
-      this.rod = ((this.rod + 3) % 3) + 1;
+      this.rodType = ((this.rodType + 3) % 3) + 1;
     } else {
-      this.rod = this.rod - 1;
-      if (this.rod <= 0) this.rod += 3;
+      this.rodType = this.rodType - 1;
+      if (this.rodType <= 0) this.rodType += 3;
     }
-    await FishStore.saveRod({ type: this.rod });
+    this.lake.changeRod(this.rodType);
+    await FishStore.saveRod({ type: this.rodType });
   }
 });

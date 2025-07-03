@@ -1,7 +1,11 @@
 <script>
 import FishStore from "./util/fishStore";
 import router from "@system.router";
+import Lake from "./util/lake";
 export default {
+  data: {
+    lake: new Lake()
+  },
   async onCreate() {
     await FishStore.init();
   },

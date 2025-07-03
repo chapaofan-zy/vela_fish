@@ -7,7 +7,7 @@
           <text @click="changeLake(0)">{{ `<` }}</text>
         </div>
         <div>
-          <text>{{ lake }}</text>
+          <text>{{ lake.level }}</text>
         </div>
         <div>
           <text @click="changeLake(1)">{{ `>` }}</text>
@@ -18,7 +18,7 @@
       <text>鱼竿</text>
       <div class="setting">
         <text @click="changeRod(0)">{{ `<` }}</text>
-        <text>{{ rod }}</text>
+        <text>{{ lake.rod.type }}</text>
         <text @click="changeRod(1)">{{ `>` }}</text>
       </div>
     </div>

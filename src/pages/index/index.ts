@@ -1,15 +1,17 @@
 import type { Fish } from "../../util/fish";
-import Lake from "../../util/lake";
 import { defineUxComponent } from "ux-types";
 import router from "@system.router";
 import FishStore from "../../util/fishStore";
 
 export default defineUxComponent({
   public: {
-    lake: new Lake(),
     showTip: false,
     fish: undefined,
-    dropped: false
+    dropped: false,
+    lake: undefined
+  },
+  onShow() {
+    this.lake = this.$app.$def.data.lake;
   },
   showOnFish() {
     this.showTip = true;
@@ -32,7 +34,7 @@ export default defineUxComponent({
       this.dropped = false;
     }
   },
-  go(uri: string) {
-    router.push({ uri });
+  go(uri: string, params?: any) {
+    router.push({ uri, params });
   }
 });

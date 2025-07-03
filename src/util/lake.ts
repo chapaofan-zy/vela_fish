@@ -46,6 +46,14 @@ export default class Lake {
     this.probability = Lake.lakeLevelMap.get(LakeLevel.ONE);
   }
 
+  changeLevel(level: number) {
+    this.level = level;
+  }
+
+  changeRod(type: number) {
+    this.rod.type = type;
+  }
+
   waitForBite() {
     return new Promise<Fish>((resolve, reject) => {
       this._reject = reject;

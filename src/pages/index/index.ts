@@ -15,6 +15,10 @@ export default defineUxComponent({
     this.showTip = true;
   },
   async drop() {
+    console.log(this.lake);
+    console.log(await FishStore.getLake());
+    console.log(await FishStore.getRod());
+
     this.dropped = true;
     try {
       this.fish = (await this.lake.waitForBite()) as Fish;
@@ -28,7 +32,7 @@ export default defineUxComponent({
       this.dropped = false;
     }
   },
-  goList() {
-    router.push({ uri: "/pages/list" });
+  go(uri: string) {
+    router.push({ uri });
   }
 });

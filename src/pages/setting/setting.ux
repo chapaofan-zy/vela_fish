@@ -1,5 +1,28 @@
 <template>
-  <div></div>
+  <div class="bg">
+    <div class="item">
+      <text>水域</text>
+      <div class="setting">
+        <div>
+          <text @click="changeLake(0)">{{ `<` }}</text>
+        </div>
+        <div>
+          <text>{{ lake }}</text>
+        </div>
+        <div>
+          <text @click="changeLake(1)">{{ `>` }}</text>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <text>鱼竿</text>
+      <div class="setting">
+        <text @click="changeRod(0)">{{ `<` }}</text>
+        <text>{{ rod }}</text>
+        <text @click="changeRod(1)">{{ `>` }}</text>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -9,4 +32,14 @@ export default page;
 
 <style>
 @import url("../../global.css");
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.setting {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 </style>

@@ -53,13 +53,6 @@ export default class FishStore {
     return FishStore._fishStore.lake;
   }
 
-  static async setLake(lake: any) {
-    if (!FishStore._fishStore) {
-      await this.init();
-    }
-    return (FishStore._fishStore.lake = lake);
-  }
-
   static async saveLake(lake: any) {
     if (!FishStore._fishStore) {
       await this.init();

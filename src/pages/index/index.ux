@@ -3,7 +3,8 @@
   <div @click="lake.clickLake(lake.isBiting)" class="bg">
     <div if="{{ lake.bite }}"><text>bite</text></div>
     <input type="button" @click="drop" value="drop" />
-    <input type="button" value="list" @click="goList" />
+    <input type="button" value="list" @click="go('/pages/list')" />
+    <input type="button" value="setting" @click="go('/pages/setting')" />
     <div if="{{ showTip }}" class="tip">
       <fish-info fish="{{ fish }}" cb="{{ () => showTip = false }}"></fish-info>
       <input type="button" @click="() => (showTip = false)" value="close" />

@@ -3,7 +3,10 @@ import { Fish } from "./fish";
 import { fishList, Level, type FishName } from "./fishList";
 
 export default class FishStore {
-  private static _fishStore: { [k: FishName]: Fish } & { lake: any; rod: any };
+  private static _fishStore: { [k: FishName]: Fish } & {
+    lake: { level: number; price: number };
+    rod: { type: number };
+  };
 
   static _fishStoreKey = "fishStore";
 

@@ -1,6 +1,5 @@
 import { defineUxComponent } from "ux-types";
 import { Fish } from "../../util/fish";
-import router from "@system.router";
 import { getLevelColor } from "../../util/fishList";
 
 export default defineUxComponent({
@@ -9,11 +8,8 @@ export default defineUxComponent({
     info: {} as Fish
   },
   onShow() {
-    console.log("onShow", this.fish);
-
     const fish = JSON.parse(this.fish || "{}") as Fish;
     this.info = fish;
-    console.log("info", this.info);
   },
   computed: {
     fishInfo() {
@@ -30,6 +26,10 @@ export default defineUxComponent({
         {
           label: "大小",
           value: this.info.size
+        },
+        {
+          label: "价值",
+          value: this.info.fishInfo.price
         },
         {
           label: "描述",

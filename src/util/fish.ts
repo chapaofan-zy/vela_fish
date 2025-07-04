@@ -1,13 +1,4 @@
-import { getFishType, type FishName } from "./fishList";
-
-export interface FishType {
-  name: string;
-  size: number;
-  range: number;
-  level: number;
-  img: string;
-  description?: string;
-}
+import { getFishType, type FishName, type FishType } from "./fishList";
 
 export class Fish {
   readonly date = new Date().toLocaleString();
@@ -24,6 +15,10 @@ export class Fish {
 
   get img() {
     return this.fishInfo.img;
+  }
+
+  get price() {
+    return this.fishInfo.price;
   }
 
   constructor(public name: FishName) {

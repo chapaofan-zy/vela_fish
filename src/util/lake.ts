@@ -29,11 +29,13 @@ export default class Lake {
     [LakeLevel.TWO, { zero: 2, one: 10, two: 15, three: 20, four: 33, five: 20 }],
     [LakeLevel.THREE, { zero: 5, one: 15, two: 20, three: 25, four: 20, five: 15 }]
   ]);
+  static readonly levelPrice = [200, 600];
   rod = new Rod();
   bite = false;
   isBiting = false;
   private timer?: number;
   level: LakeLevel;
+  price: number;
   probability: Probability = Lake.lakeLevelMap.get(LakeLevel.ONE);
   constructor() {
     this.getLevel();
@@ -44,6 +46,10 @@ export default class Lake {
   private async getLevel() {
     this.level = (await FishStore.getLake())?.level || LakeLevel.ONE;
     this.probability = Lake.lakeLevelMap.get(LakeLevel.ONE);
+  }
+
+  async getPrice() {
+    this.price = (await FishStore.getLake())?.price || 0;
   }
 
   changeLevel(level: number) {

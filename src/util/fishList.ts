@@ -1,5 +1,3 @@
-import type { FishType } from "./fish";
-
 export enum Level {
   ONE = 1,
   TWO = 2,
@@ -30,66 +28,72 @@ export const getLevelColor = (level: number) =>
 
 export type FishName = string;
 
-interface ILevelList {
-  name: FishName;
+export interface FishType {
+  name: string;
   size: number;
   range: number;
-  level: Level;
+  level: number;
   img: string;
+  price: number;
   description?: string;
 }
 
-const levelOne: ILevelList[] = [
+const levelOne: FishType[] = [
   {
     name: "eee",
     size: 10,
     range: 5,
     level: Level.ONE,
     img: "/common/logo.png",
+    price: 80,
     description: "A common fish found in lakes."
   }
 ];
 
-const levelTwo: ILevelList[] = [
+const levelTwo: FishType[] = [
   {
     name: "ddd",
     size: 10,
     range: 5,
     level: Level.TWO,
     img: "/common/logo.png",
+    price: 40,
     description: "A common fish found in lakes."
   }
 ];
 
-const levelThree: ILevelList[] = [
+const levelThree: FishType[] = [
   {
     name: "ccc",
     size: 10,
     range: 5,
     level: Level.THREE,
     img: "/common/logo.png",
+    price: 20,
     description: "A common fish found in lakes."
   }
 ];
 
-const levelFour: ILevelList[] = [
+const levelFour: FishType[] = [
   {
     name: "bbb",
     size: 10,
     range: 5,
     level: Level.FOUR,
     img: "/common/logo.png",
+    price: 10,
     description: "A common fish found in lakes."
   }
 ];
 
-const levelFive: ILevelList[] = [
+const levelFive: FishType[] = [
   {
     name: "aaa",
     size: 10,
     range: 5,
     level: Level.FIVE,
     img: "/common/logo.png",
+    price: 5,
     description: "A common fish found in lakes."
   }
 ];

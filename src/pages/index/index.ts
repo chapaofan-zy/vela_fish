@@ -11,21 +11,28 @@ export default defineUxComponent({
     lake: undefined
   },
   onShow() {
+    this.dropped = false;
     this.lake = this.$app.$def.data.lake;
+    const water = this.$element("water") as any;
+    this.lake.cb = (v: boolean) => {
+      v ? water.start() : water.stop();
+    };
+    setTimeout(() => {
+      (this.$element("lake") as any).start();
+    }, 500);
   },
   showOnFish() {
     this.showTip = true;
   },
   async drop() {
-    console.log(this.lake);
-    console.log(await FishStore.getLake());
-    console.log(await FishStore.getRod());
-
+    if (this.dropped) return;
+    (this.$element("rod") as any).start();
     this.dropped = true;
     try {
-      this.fish = (await this.lake.waitForBite()) as Fish;
-      console.log("fffff", this.fish);
-
+      const water = this.$element("water") as any;
+      const startWater = () => water.start();
+      const endWatrt = () => water.stop();
+      this.fish = (await this.lake.waitForBite(startWater, endWatrt)) as Fish;
       await FishStore.saveFish(this.fish);
       this.showOnFish();
     } catch (e) {

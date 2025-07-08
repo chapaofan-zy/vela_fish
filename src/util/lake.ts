@@ -32,13 +32,23 @@ export default class Lake {
   static readonly levelPrice = [200, 600];
   rod = new Rod();
   bite = false;
-  isBiting = false;
   private timer?: number;
   level: LakeLevel;
   price: number;
   probability: Probability = Lake.lakeLevelMap.get(LakeLevel.ONE);
+  private _isBiting = false;
+  cb?: (v: boolean) => void;
   constructor() {
     this.getLevel();
+  }
+  get isBiting() {
+    return this._isBiting;
+  }
+  set isBiting(v: any) {
+    console.log(v);
+
+    this.cb?.(v);
+    this._isBiting = v;
   }
 
   private _reject?: (r?: any) => void;
@@ -60,12 +70,12 @@ export default class Lake {
     this.rod.type = type;
   }
 
-  waitForBite() {
+  waitForBite(start: () => void, end: () => void) {
     return new Promise<Fish>((resolve, reject) => {
       this._reject = reject;
       setTimeout(async () => {
         try {
-          resolve(await this.onBite());
+          resolve(await this.onBite(start, end));
         } catch (e) {
           console.error(e);
           reject();
@@ -74,10 +84,11 @@ export default class Lake {
     });
   }
 
-  private onBite() {
+  private onBite(start: () => void, end: () => void) {
     return new Promise<Fish>((resolve) => {
       this.bite = true;
       this.isBiting = true;
+      start();
       console.log("shang gou", this.bite);
       clearTimeout(this.timer);
       this.checkLake();
@@ -86,6 +97,7 @@ export default class Lake {
         if (this.bite) {
           clearTimeout(this.timer);
           console.log("shang yu", this.bite);
+          end();
           resolve(this.getFish());
         }
         this.bite = false;
@@ -99,7 +111,7 @@ export default class Lake {
       this.bite = false;
       console.log("fail");
       this._reject?.();
-    }, 500);
+    }, 1000);
   }
 
   clickLake(isBiting: boolean) {

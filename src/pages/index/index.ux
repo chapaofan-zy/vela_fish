@@ -1,13 +1,73 @@
 <import name="fish-info" src="../../component/fishInfo"></import>
 <template>
   <div @click="lake.clickLake(lake.isBiting)" class="bg">
-    <div if="{{ lake.bite }}"><text>bite</text></div>
-    <input type="button" @click="drop" value="drop" />
-    <input type="button" value="list" @click="go('/pages/list')" />
-    <input type="button" value="setting" @click="go('/pages/setting')" />  
-    <div if="{{ showTip }}" class="tip">
-      <fish-info fish="{{ fish }}" cb="{{ () => showTip = false }}"></fish-info>
-      <input type="button" @click="() => (showTip = false)" value="close" />
+    <!-- lake -->
+    <image-animator
+      if="{{ lake.level === 1 }}"
+      class="lake"
+      id="lake"
+      images="{{ [{src: '/common/lake/level1/lake1.png'} ,{src: '/common/lake/level1/lake2.png'}, {src:
+'/common/lake/level1/lake3.png'}] }}"
+      duration="1s"
+    />
+    <image-animator
+      if="{{ lake.level === 2 }}"
+      class="lake"
+      id="lake"
+      images="{{ [{src: '/common/lake/level2/lake1.png'} ,{src: '/common/lake/level2/lake2.png'}, {src:
+'/common/lake/level2/lake3.png'}] }}"
+      duration="1s"
+    />
+    <image-animator
+      if="{{ lake.level === 3 }}"
+      class="lake"
+      id="lake"
+      images="{{ [{src: '/common/lake/level3/lake1.png'} ,{src: '/common/lake/level3/lake2.png'}, {src:
+'/common/lake/level3/lake3.png'}] }}"
+      duration="1s"
+    />
+    <!-- water -->
+    <image-animator
+      class="water"
+      id="water"
+      images="{{ [{src: '/common/water1.png'},{src: '/common/water2.png'},{src: '/common/water3.png'},{src:
+'/common/water0.png'}] }}"
+    ></image-animator>
+    <image-animator
+      class="water"
+      id="water"
+      images="{{ [{src: '/common/water1.png'} ,{src: '/common/water2.png'}, {src: '/common/water3.png'},{src:
+'/common/water0.png'}] }}"
+      duration="500ms"
+    />
+    <!-- rod -->
+    <image-animator
+      if="{{ lake.rod.type === 1 }}"
+      iteration="1"
+      class="rod"
+      id="rod"
+      images="{{ [{src: '/common/rod/type1/rod1.png'} ,{src: '/common/rod/type1/rod2.png'}, {src:
+'/common/rod/type1/rod3.png'}] }}"
+      duration="200ms"
+      @click="drop"
+    />
+    <div style="{{ {position: 'absolute'} }}">
+      <!-- <div if="{{ lake.bite }}"><text>bite</text></div>
+      <input type="button" value="list" @click="go('/pages/list')" />
+      <input type="button" value="setting" @click="go('/pages/setting')" /> -->
+      <div if="{{ showTip }}" class="tip">
+        <fish-info fish="{{ fish }}" cb="{{ () => showTip = false }}"></fish-info>
+        <input
+          type="button"
+          @click="
+            () => {
+              showTip = false;
+              dropped = false;
+            }
+          "
+          value="close"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +84,25 @@ export default page;
   position: relative;
 }
 
+.lake {
+  width: 130%;
+  height: 130%;
+}
+
+.water {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  transform: translateY(30%);
+}
+
+.rod {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  bottom: 0;
+}
+
 .tip {
   position: absolute;
   top: 0;
@@ -33,7 +112,7 @@ export default page;
   margin: auto;
   width: 70%;
   height: 70%;
-  border-radius: 6dp;
+  /* border-radius: 6dp; */
   background-color: #828282;
   display: flex;
   flex-direction: column;

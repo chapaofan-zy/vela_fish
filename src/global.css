@@ -4,7 +4,9 @@ text {
 
 .bg {
   position: relative;
-  background-color: #000;
+  background-image: url("/common/lake/level1/lake1.png");
+  background-size: cover;
+  background-position: center;
   width: 100%;
   height: 100%;
   display: flex;
